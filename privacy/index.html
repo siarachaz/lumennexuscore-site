@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -34,13 +33,44 @@
     }
 
     body {
-      background:
-        linear-gradient(rgba(13, 20, 36, 0.58), rgba(13, 20, 36, 0.82)),
-        url("BackgroundDark.png") center center / cover no-repeat fixed;
+      position: relative;
       overflow: hidden;
+      background:
+        url("BackgroundDark.png") center center / cover no-repeat fixed;
+    }
+
+    /* dunkle Overlay-Schicht für den Hintergrund */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(13, 20, 36, 0.60), rgba(13, 20, 36, 0.84));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* maskiert rechte Randartefakte im Background */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 64px;
+      height: 100vh;
+      background: linear-gradient(
+        to left,
+        rgba(13, 20, 36, 0.98) 0%,
+        rgba(13, 20, 36, 0.92) 35%,
+        rgba(13, 20, 36, 0.00) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
     }
 
     .page-shell {
+      position: relative;
+      z-index: 1;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -77,10 +107,11 @@
     h1 {
       margin: 0 0 8px;
       color: var(--accent-gold);
-      font-size: 3rem;
+      font-size: 2.65rem;
       line-height: 1.1;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      font-weight: 700;
     }
 
     .subtitle {
@@ -97,7 +128,7 @@
       margin-top: 36px;
       margin-bottom: 14px;
       font-size: 1.5rem;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
     }
 
     p,
@@ -177,7 +208,7 @@
       }
 
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
       }
 
       h2 {
@@ -189,9 +220,12 @@
       body {
         background-attachment: scroll;
       }
+
+      body::after {
+        width: 28px;
+      }
     }
   </style>
-
 </head>
 
 <body>
@@ -199,137 +233,134 @@
     <main class="content-panel">
       <img src="HeaderBanner.png" alt="Lumen Nexus: Core Banner" class="banner" />
 
-```
-  <div class="content-inner">
-    <h1>Privacy Policy</h1>
-    <p class="subtitle">Lumen Nexus: Core</p>
+      <div class="content-inner">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Lumen Nexus: Core</p>
 
-    <p>
-      This Privacy Policy explains how data is handled in connection with
-      <strong>Lumen Nexus: Core</strong>.
-    </p>
+        <p>
+          This Privacy Policy explains how data is handled in connection with
+          <strong>Lumen Nexus: Core</strong>.
+        </p>
 
-    <p>
-      Lumen Nexus: Core is developed as a solo indie project. Data collection is kept limited
-      and is used only to improve the game, understand technical issues, balance gameplay,
-      and make the early alpha more stable and enjoyable to play.
-    </p>
+        <p>
+          Lumen Nexus: Core is developed as a solo indie project. Data collection is kept limited
+          and is used only to improve the game, understand technical issues, balance gameplay,
+          and make the early alpha more stable and enjoyable to play.
+        </p>
 
-    <h2>Anonymous Gameplay Statistics</h2>
+        <h2>Anonymous Gameplay Statistics</h2>
 
-    <p>
-      During gameplay, <span class="anonymous">anonymous</span> gameplay statistics may be sent
-      when a run ends and once when the feedback quest is completed.
-    </p>
+        <p>
+          During gameplay, <span class="anonymous">anonymous</span> gameplay statistics may be sent
+          when a run ends and once when the feedback quest is completed.
+        </p>
 
-    <p>
-      These statistics may include gameplay progress, produced and consumed resources,
-      balancing-related values, and technical diagnostic data.
-    </p>
+        <p>
+          These statistics may include gameplay progress, produced and consumed resources,
+          balancing-related values, and technical diagnostic data.
+        </p>
 
-    <p>
-      This data does not include your name, email address, local file paths, or any other
-      information intended to identify you.
-    </p>
+        <p>
+          This data does not include your name, email address, local file paths, or any other
+          information intended to identify you.
+        </p>
 
-    <p>
-      The data is used only to improve balancing, game feel, progression, stability, and the
-      overall flow of <strong>Lumen Nexus: Core</strong>.
-    </p>
+        <p>
+          The data is used only to improve balancing, game feel, progression, stability, and the
+          overall flow of <strong>Lumen Nexus: Core</strong>.
+        </p>
 
-    <p>
-      You can disable the sending of anonymous gameplay statistics at any time in the game under:
-      <br />
-      <strong>Settings &gt; General &gt; Privacy</strong>.
-    </p>
+        <p>
+          You can disable the sending of anonymous gameplay statistics at any time in the game under:
+          <br />
+          <strong>Settings &gt; General &gt; Privacy</strong>.
+        </p>
 
-    <h2>Bug Reports and Feedback</h2>
+        <h2>Bug Reports and Feedback</h2>
 
-    <p>
-      When you submit feedback or a bug report, you may choose to include additional
-      anonymized technical diagnostic data by enabling the related toggle.
-    </p>
+        <p>
+          When you submit feedback or a bug report, you may choose to include additional
+          anonymized technical diagnostic data by enabling the related toggle.
+        </p>
 
-    <p>
-      This optional diagnostic data is only sent if you actively submit feedback or a bug report
-      and choose to include it. No diagnostic data is sent as part of a feedback or bug report
-      without your confirmation.
-    </p>
+        <p>
+          This optional diagnostic data is only sent if you actively submit feedback or a bug report
+          and choose to include it. No diagnostic data is sent as part of a feedback or bug report
+          without your confirmation.
+        </p>
 
-    <p>
-      The optional diagnostic data may include anonymized technical information such as game state,
-      system information, performance statistics, recent gameplay events, and recent errors.
-    </p>
+        <p>
+          The optional diagnostic data may include anonymized technical information such as game state,
+          system information, performance statistics, recent gameplay events, and recent errors.
+        </p>
 
-    <p>
-      This information is used only to improve <strong>Lumen Nexus: Core</strong>, investigate
-      reported issues, and reproduce bugs more effectively.
-    </p>
+        <p>
+          This information is used only to improve <strong>Lumen Nexus: Core</strong>, investigate
+          reported issues, and reproduce bugs more effectively.
+        </p>
 
-    <div class="note">
-      <p>
-        If you write a message in a free-text feedback field, please do not include personal
-        information such as your real name, email address, Discord username, address, phone number,
-        or any other information that could identify you.
-      </p>
-    </div>
+        <div class="note">
+          <p>
+            If you write a message in a free-text feedback field, please do not include personal
+            information such as your real name, email address, Discord username, address, phone number,
+            or any other information that could identify you.
+          </p>
+        </div>
 
-    <p>
-      Feedback text is only used to understand your report, improve the game, and troubleshoot
-      reported issues.
-    </p>
+        <p>
+          Feedback text is only used to understand your report, improve the game, and troubleshoot
+          reported issues.
+        </p>
 
-    <h2>Third-Party Platforms</h2>
+        <h2>Third-Party Platforms</h2>
 
-    <p>
-      Lumen Nexus: Core may be distributed, discussed, or promoted through third-party platforms
-      such as itch.io, Discord, YouTube, Reddit, Twitter/X, Steam, or similar services.
-    </p>
+        <p>
+          Lumen Nexus: Core may be distributed, discussed, or promoted through third-party platforms
+          such as itch.io, Discord, YouTube, Reddit, Twitter/X, Steam, or similar services.
+        </p>
 
-    <p>
-      These platforms are operated independently and may process data according to their own
-      privacy policies.
-    </p>
+        <p>
+          These platforms are operated independently and may process data according to their own
+          privacy policies.
+        </p>
 
-    <h2>Data Retention</h2>
+        <h2>Data Retention</h2>
 
-    <p>
-      Anonymous gameplay statistics and diagnostic information are retained only as long as
-      reasonably necessary for development, balancing, troubleshooting, stability improvements,
-      or legal obligations.
-    </p>
+        <p>
+          Anonymous gameplay statistics and diagnostic information are retained only as long as
+          reasonably necessary for development, balancing, troubleshooting, stability improvements,
+          or legal obligations.
+        </p>
 
-    <p>
-      Feedback text and bug reports may be kept for as long as they are useful for understanding
-      and resolving reported issues.
-    </p>
+        <p>
+          Feedback text and bug reports may be kept for as long as they are useful for understanding
+          and resolving reported issues.
+        </p>
 
-    <h2>Contact</h2>
+        <h2>Contact</h2>
 
-    <p>
-      If you have questions about this Privacy Policy or how data is handled, you can contact me at:
-      <br />
-      <a href="mailto:DormannThorsten@googlemail.com">DormannThorsten@googlemail.com</a>
-    </p>
+        <p>
+          If you have questions about this Privacy Policy or how data is handled, you can contact me at:
+          <br />
+          <a href="mailto:DormannThorsten@googlemail.com">DormannThorsten@googlemail.com</a>
+        </p>
 
-    <h2>Changes to This Policy</h2>
+        <h2>Changes to This Policy</h2>
 
-    <p>
-      This Privacy Policy may be updated from time to time as development continues,
-      features change, or new distribution platforms are added.
-    </p>
+        <p>
+          This Privacy Policy may be updated from time to time as development continues,
+          features change, or new distribution platforms are added.
+        </p>
 
-    <p>
-      The latest version will always be published on this page.
-    </p>
+        <p>
+          The latest version will always be published on this page.
+        </p>
 
-    <p class="footer-note">
-      <em>Last updated: 12 June 2026</em>
-    </p>
-  </div>
-</main>
-```
-
+        <p class="footer-note">
+          <em>Last updated: 12 June 2026</em>
+        </p>
+      </div>
+    </main>
   </div>
 </body>
 </html>
