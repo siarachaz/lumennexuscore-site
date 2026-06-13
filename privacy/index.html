@@ -1,20 +1,237 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Privacy Policy - Lumen Nexus: Core</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumen Nexus: Core – Privacy Policy</title>
+  <style>
+    :root {
+      --bg-dark: #0d1424;
+      --panel-bg: rgba(26, 35, 54, 0.94);
+      --text: #e8ecf2;
+      --link: #4dd6e0;
+      --accent: #f2c14e;
+      --border: rgba(77, 214, 224, 0.2);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Lato, Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--bg-dark);
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(13, 20, 36, 0.58), rgba(13, 20, 36, 0.78)),
+        url("BackgroundDark.png") center center / cover no-repeat fixed;
+      overflow: hidden;
+    }
+
+    .page-shell {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 20px;
+    }
+
+    .content-panel {
+      width: min(1000px, 100%);
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 40px var(--shadow);
+    }
+
+    .banner {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .content-inner {
+      padding: 32px 40px 40px;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 3rem;
+      line-height: 1.1;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: var(--link);
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+      font-size: 1.5rem;
+    }
+
+    p,
+    li {
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    strong {
+      color: var(--accent);
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    .content-panel::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .content-panel::-webkit-scrollbar-track {
+      background: rgba(13, 20, 36, 0.85);
+    }
+
+    .content-panel::-webkit-scrollbar-thumb {
+      background: rgba(77, 214, 224, 0.45);
+      border-radius: 999px;
+    }
+
+    .content-panel::-webkit-scrollbar-thumb:hover {
+      background: rgba(77, 214, 224, 0.65);
+    }
+
+    @media (max-width: 900px) {
+      .page-shell {
+        padding: 16px;
+      }
+
+      .content-panel {
+        height: calc(100vh - 32px);
+      }
+
+      .content-inner {
+        padding: 24px 22px 28px;
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
+  <div class="page-shell">
+    <main class="content-panel">
+      <img src="HeaderBanner.png" alt="Lumen Nexus: Core Banner" class="banner" />
 
-  <p>This privacy policy applies to Lumen Nexus: Core.</p>
+      <div class="content-inner">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Lumen Nexus: Core</p>
 
-  <p>Last updated: 2026-06-13</p>
+        <p>
+          This Privacy Policy explains how data is handled in connection with
+          <strong>Lumen Nexus: Core</strong>.
+        </p>
 
-  <h2>Contact</h2>
-  <p>Email: YOUR_EMAIL_HERE</p>
+        <h2>1. Overview</h2>
+        <p>
+          Lumen Nexus: Core is currently in active development. If you use the game,
+          visit related pages, or submit feedback, some limited information may be processed
+          in order to provide the game, improve stability, and respond to bug reports or support requests.
+        </p>
 
-  <p><a href="/">Back to homepage</a></p>
+        <h2>2. Data We May Collect</h2>
+        <p>
+          Depending on how you interact with the game, the following types of data may be collected:
+        </p>
+        <ul>
+          <li>technical device and system information</li>
+          <li>game version and platform information</li>
+          <li>game settings and gameplay-related state</li>
+          <li>performance data and error logs</li>
+          <li>feedback or bug report content you submit voluntarily</li>
+        </ul>
+
+        <h2>3. Why Data Is Used</h2>
+        <p>
+          Data is only used for purposes such as:
+        </p>
+        <ul>
+          <li>improving game stability and performance</li>
+          <li>reproducing and fixing bugs</li>
+          <li>understanding technical issues</li>
+          <li>responding to support or feedback messages</li>
+        </ul>
+
+        <h2>4. Voluntary Information</h2>
+        <p>
+          If you contact me directly, join the Discord, or submit feedback manually,
+          you may choose to provide additional information voluntarily.
+        </p>
+
+        <h2>5. Third-Party Platforms</h2>
+        <p>
+          Lumen Nexus: Core may be distributed or discussed through third-party services such as
+          itch.io, Discord, YouTube, Reddit, Twitter/X, Steam, or similar platforms.
+          Those services may collect data under their own privacy policies.
+        </p>
+
+        <h2>6. Data Retention</h2>
+        <p>
+          Data is only retained as long as reasonably necessary for development, support,
+          troubleshooting, or legal obligations.
+        </p>
+
+        <h2>7. Contact</h2>
+        <p>
+          If you have questions about this Privacy Policy, you can contact me at:
+          <br />
+          <a href="mailto:YOURMAIL@example.com">YOURMAIL@example.com</a>
+        </p>
+
+        <h2>8. Changes</h2>
+        <p>
+          This Privacy Policy may be updated from time to time as development continues.
+          The latest version will always be published on this page.
+        </p>
+
+        <p><em>Last updated: 12 June 2026</em></p>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
