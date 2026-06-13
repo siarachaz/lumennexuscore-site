@@ -1,21 +1,361 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Lumen Nexus: Core</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta http-equiv="refresh" content="0; url=https://toddln.itch.io/lumen-nexus-core">
-  <link rel="canonical" href="https://toddln.itch.io/lumen-nexus-core">
+  <meta http-equiv="refresh" content="4; url=https://toddln.itch.io/lumen-nexus-core" />
+
+  <style>
+    :root {
+      --bg-dark: #0d1424;
+      --panel-bg: #1a2336;
+      --text: #e8ecf2;
+      --muted-text: #b9c4d6;
+      --link: #4dd6e0;
+      --accent-gold: #f2c14e;
+      --soft-blue: #c3d6ff;
+      --border-cyan: rgba(77, 214, 224, 0.25);
+      --shadow: rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Lato, Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--bg-dark);
+    }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      background:
+        url("BackgroundDark.png") center center / cover no-repeat fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(77, 214, 224, 0.08), transparent 35%),
+        linear-gradient(rgba(13, 20, 36, 0.58), rgba(13, 20, 36, 0.84));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 72px;
+      height: 100vh;
+      background: linear-gradient(
+        to left,
+        rgba(13, 20, 36, 0.98) 0%,
+        rgba(13, 20, 36, 0.92) 35%,
+        rgba(13, 20, 36, 0.00) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 20px;
+    }
+
+    .content-panel {
+      width: min(1000px, 100%);
+      min-height: min(760px, calc(100vh - 64px));
+      background: var(--panel-bg);
+      color: var(--text);
+      border: 1px solid var(--border-cyan);
+      box-shadow:
+        0 10px 40px var(--shadow),
+        0 0 32px rgba(77, 214, 224, 0.08);
+      animation: panelFadeIn 650ms ease-out both;
+    }
+
+    .banner {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid rgba(77, 214, 224, 0.18);
+    }
+
+    .content-inner {
+      min-height: 340px;
+      padding: 58px 44px 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      color: var(--accent-gold);
+      font-size: 2.15rem;
+      line-height: 1.15;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .intro {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .redirect-text {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .target-link {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 1.05rem;
+      margin-bottom: 26px;
+    }
+
+    .target-link:hover {
+      text-decoration: underline;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .count-item {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(77, 214, 224, 0.35);
+      background:
+        radial-gradient(circle at center, rgba(77, 214, 224, 0.16), rgba(26, 35, 54, 0.92));
+      color: var(--accent-gold);
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 18px rgba(77, 214, 224, 0.12),
+        inset 0 0 14px rgba(77, 214, 224, 0.08);
+      opacity: 0.35;
+      transform: scale(0.92);
+    }
+
+    .count-3 {
+      animation: pulseNumber 1s ease-out 0s both;
+    }
+
+    .count-2 {
+      animation: pulseNumber 1s ease-out 1s both;
+    }
+
+    .count-1 {
+      animation: pulseNumber 1s ease-out 2s both;
+    }
+
+    .count-go {
+      width: auto;
+      padding: 0 18px;
+      color: var(--link);
+      animation: pulseNumber 1s ease-out 3s both;
+    }
+
+    .scanline {
+      width: min(420px, 100%);
+      height: 2px;
+      margin-top: 30px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(77, 214, 224, 0.25),
+        var(--link),
+        rgba(77, 214, 224, 0.25),
+        transparent
+      );
+      animation: scanPulse 1.4s ease-in-out infinite;
+    }
+
+    .fallback {
+      margin-top: 22px;
+      color: var(--muted-text);
+      font-size: 0.9rem;
+    }
+
+    .fallback a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .fallback a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes panelFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseNumber {
+      0% {
+        opacity: 0.35;
+        transform: scale(0.92);
+      }
+
+      18% {
+        opacity: 1;
+        transform: scale(1.12);
+        box-shadow:
+          0 0 26px rgba(77, 214, 224, 0.28),
+          inset 0 0 18px rgba(77, 214, 224, 0.12);
+      }
+
+      75% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0.35;
+        transform: scale(0.92);
+      }
+    }
+
+    @keyframes scanPulse {
+      0% {
+        opacity: 0.25;
+        transform: scaleX(0.65);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+
+      100% {
+        opacity: 0.25;
+        transform: scaleX(0.65);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-shell {
+        padding: 16px;
+      }
+
+      .content-panel {
+        min-height: calc(100vh - 32px);
+      }
+
+      .content-inner {
+        padding: 42px 22px 48px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      body::after {
+        width: 28px;
+      }
+
+      .count-item {
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem;
+      }
+
+      .countdown {
+        gap: 10px;
+      }
+    }
+  </style>
+
+  <script>
+    window.setTimeout(function () {
+      window.location.href = "https://toddln.itch.io/lumen-nexus-core";
+    }, 4000);
+  </script>
+
 </head>
-<body>
-  <p>
-    Redirecting to
-    <a href="https://toddln.itch.io/lumen-nexus-core">Lumen Nexus: Core on itch.io</a>.
-  </p>
 
-  <p>
-    <a href="/privacy/">Privacy Policy</a>
-  </p>
+<body>
+  <div class="page-shell">
+    <main class="content-panel">
+      <img src="HeaderBanner.png" alt="Lumen Nexus: Core Banner" class="banner" />
+
+```
+  <div class="content-inner">
+    <h1>We will move you on</h1>
+
+    <p class="intro">Thank you for visiting.</p>
+
+    <p class="redirect-text">
+      You will be redirected to
+    </p>
+
+    <a class="target-link" href="https://toddln.itch.io/lumen-nexus-core">
+      toddln.itch.io/lumen-nexus-core
+    </a>
+
+    <div class="countdown" aria-label="Redirect countdown">
+      <div class="count-item count-3">3</div>
+      <div class="count-item count-2">2</div>
+      <div class="count-item count-1">1</div>
+      <div class="count-item count-go">GO</div>
+    </div>
+
+    <div class="scanline"></div>
+
+    <p class="fallback">
+      If the redirect does not work,
+      <a href="https://toddln.itch.io/lumen-nexus-core">click here</a>.
+    </p>
+  </div>
+</main>
+```
+
+  </div>
 </body>
 </html>
