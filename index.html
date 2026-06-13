@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +16,6 @@
       --muted-text: #b9c4d6;
       --link: #4dd6e0;
       --accent-gold: #f2c14e;
-      --soft-blue: #c3d6ff;
       --border-cyan: rgba(77, 214, 224, 0.25);
       --shadow: rgba(0, 0, 0, 0.55);
     }
@@ -39,8 +37,7 @@
     body {
       position: relative;
       overflow: hidden;
-      background:
-        url("BackgroundDark.png") center center / cover no-repeat fixed;
+      background: url("/BackgroundDark.png") center center / cover no-repeat fixed;
     }
 
     body::before {
@@ -59,13 +56,13 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 72px;
+      width: 96px;
       height: 100vh;
       background: linear-gradient(
         to left,
-        rgba(13, 20, 36, 0.98) 0%,
-        rgba(13, 20, 36, 0.92) 35%,
-        rgba(13, 20, 36, 0.00) 100%
+        rgba(13, 20, 36, 1) 0%,
+        rgba(13, 20, 36, 0.96) 35%,
+        rgba(13, 20, 36, 0) 100%
       );
       pointer-events: none;
       z-index: 0;
@@ -91,6 +88,7 @@
         0 10px 40px var(--shadow),
         0 0 32px rgba(77, 214, 224, 0.08);
       animation: panelFadeIn 650ms ease-out both;
+      overflow: hidden;
     }
 
     .banner {
@@ -297,7 +295,7 @@
       }
 
       body::after {
-        width: 28px;
+        width: 36px;
       }
 
       .count-item {
@@ -317,45 +315,41 @@
       window.location.href = "https://toddln.itch.io/lumen-nexus-core";
     }, 4000);
   </script>
-
 </head>
 
 <body>
   <div class="page-shell">
     <main class="content-panel">
-      <img src="HeaderBanner.png" alt="Lumen Nexus: Core Banner" class="banner" />
+      <img src="/HeaderBanner.png" alt="Lumen Nexus: Core Banner" class="banner" />
 
-```
-  <div class="content-inner">
-    <h1>We will move you on</h1>
+      <div class="content-inner">
+        <h1>We will move you on</h1>
 
-    <p class="intro">Thank you for visiting.</p>
+        <p class="intro">Thank you for visiting.</p>
 
-    <p class="redirect-text">
-      You will be redirected to
-    </p>
+        <p class="redirect-text">
+          You will be redirected to
+        </p>
 
-    <a class="target-link" href="https://toddln.itch.io/lumen-nexus-core">
-      toddln.itch.io/lumen-nexus-core
-    </a>
+        <a class="target-link" href="https://toddln.itch.io/lumen-nexus-core">
+          toddln.itch.io/lumen-nexus-core
+        </a>
 
-    <div class="countdown" aria-label="Redirect countdown">
-      <div class="count-item count-3">3</div>
-      <div class="count-item count-2">2</div>
-      <div class="count-item count-1">1</div>
-      <div class="count-item count-go">GO</div>
-    </div>
+        <div class="countdown" aria-label="Redirect countdown">
+          <div class="count-item count-3">3</div>
+          <div class="count-item count-2">2</div>
+          <div class="count-item count-1">1</div>
+          <div class="count-item count-go">GO</div>
+        </div>
 
-    <div class="scanline"></div>
+        <div class="scanline"></div>
 
-    <p class="fallback">
-      If the redirect does not work,
-      <a href="https://toddln.itch.io/lumen-nexus-core">click here</a>.
-    </p>
-  </div>
-</main>
-```
-
+        <p class="fallback">
+          If the redirect does not work,
+          <a href="https://toddln.itch.io/lumen-nexus-core">click here</a>.
+        </p>
+      </div>
+    </main>
   </div>
 </body>
 </html>
